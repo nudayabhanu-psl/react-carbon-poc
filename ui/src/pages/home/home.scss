@@ -1,0 +1,33 @@
+.TileStyle {
+  color: white;
+  background-color: #003a6d !important;
+  padding: 24px !important;
+}
+
+.TitleHeading {
+  font-weight: 100;
+  font-size: 1.25rem;
+}
+
+.TitleText {
+  font-weight: 100;
+}
+
+.PageContainer {
+  background-color: #f3f6fb;
+}
+
+.TileContainer {
+  margin: 1rem;
+  min-height: 40vmax;
+}
+
+.Tag {
+  cursor: context-menu;
+  margin-bottom: 1rem;
+}
+
+.TagClose {
+  margin-left: 5px;
+  cursor: pointer;
+}
