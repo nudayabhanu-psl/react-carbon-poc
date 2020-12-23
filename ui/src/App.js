@@ -2,6 +2,7 @@ import React from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 
 import { Home } from './pages/home/home'
+import { CompanyDetailsPage } from './pages/CompanyDetails/CompanyDetails'
 import { HeaderComponent } from './components/Header/Header'
 import { FooterComponent } from './components/footer/footer'
 
@@ -18,6 +19,7 @@ function AppRouter() {
         <HeaderComponent />
         <div style={defaultStyle}>
           <Route path="/" exact component={Home} />
+          <Route path="/:companyName/details" exact component={CompanyDetailsPage} />
         </div>
         <FooterComponent />
       </div>
