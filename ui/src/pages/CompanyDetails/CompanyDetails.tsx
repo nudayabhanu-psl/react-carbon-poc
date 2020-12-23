@@ -15,30 +15,8 @@ import { Share32, Wikis32, Function32 } from "@carbon/icons-react";
 import "@carbon/ibmdotcom-styles";
 
 import "./CompanyDetails.scss";
-
+import { CompanyDetails } from "../../Schema/schema";
 import { getCompanyDetails } from "../../service/api.service";
-
-interface CompanyDetails {
-  name: string;
-  title: string;
-  subTitle: string;
-  imageUrl: string;
-  website: string;
-  backgroundImage: string;
-  details: {
-    subtitle: string;
-    description: string;
-  };
-  extras: {
-    heading: string;
-    logo: string;
-    details: string[];
-  }[];
-  highlights: {
-    title: string;
-    description: string;
-  }[];
-}
 
 export const CompanyDetailsPage = () => {
   let { companyName } = useParams();
@@ -46,9 +24,14 @@ export const CompanyDetailsPage = () => {
 
   useEffect(() => {
     if (companyName) {
-      setCompanyDetails(getCompanyDetails(companyName));
+      fetchDetails(companyName);
     }
   }, [companyName]);
+
+  const fetchDetails = async (name) => {
+    const details = await getCompanyDetails(name);
+    setCompanyDetails(details);
+  };
 
   return (
     <Grid style={{ padding: 0 }}>
@@ -74,7 +57,9 @@ export const CompanyDetailsPage = () => {
                       Home
                     </p>
                     <p style={{ padding: "1rem" }}>/</p>
-                    <p style={{ padding: "1rem 1rem 1rem 0" }}>{companyDetails.name}</p>
+                    <p style={{ padding: "1rem 1rem 1rem 0" }}>
+                      {companyDetails.name}
+                    </p>
                   </Row>
                 )}
               />

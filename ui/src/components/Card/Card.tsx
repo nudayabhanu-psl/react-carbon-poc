@@ -1,17 +1,11 @@
 import React, { useState } from "react";
-import { ArrowRight32 } from '@carbon/icons-react';
+import { ArrowRight32 } from "@carbon/icons-react";
 import { Column, Button } from "carbon-components-react";
 
-import { Route } from 'react-router-dom'
+import { Route } from "react-router-dom";
 import "@carbon/ibmdotcom-styles";
 import "./Card.scss";
-
-export interface CardProps {
-  title: string;
-  imageUrl: string;
-  description: string;
-  details: string[];
-}
+import { CardProps } from "../../Schema/schema";
 
 export const Card: React.FC<CardProps> = ({
   title,
@@ -19,7 +13,6 @@ export const Card: React.FC<CardProps> = ({
   description,
   details,
 }) => {
-
   const [hoover, setHoover] = useState(false);
   return (
     <Column
@@ -40,18 +33,26 @@ export const Card: React.FC<CardProps> = ({
                 <li key={index}>{item}</li>
               ))}
             </ul>
-            <Route render={({ history }) => (
-              <Button className="button" size="small" onClick={() => { history.push(`/${title}/details`) }}>
-                View Solution
-              </Button>
-            )} />
+            <Route
+              render={({ history }) => (
+                <Button
+                  className="button"
+                  size="small"
+                  onClick={() => {
+                    history.push(`/${title}/details`);
+                  }}
+                >
+                  View Solution
+                </Button>
+              )}
+            />
           </>
         ) : (
-            <>
-              <p>{description}</p>
-              <ArrowRight32 className="arrow" />
-            </>
-          )}
+          <>
+            <p>{description}</p>
+            <ArrowRight32 className="arrow" />
+          </>
+        )}
       </div>
     </Column>
   );
